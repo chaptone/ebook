@@ -5,20 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <!--<TextView-->
-        <!--android:id="@+id/keep"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="000"-->
-        <!--android:textSize="30pt"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--/>-->
 
     <ListView
         android:id="@+id/listview_stack"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-
     </ListView>
 </LinearLayout>

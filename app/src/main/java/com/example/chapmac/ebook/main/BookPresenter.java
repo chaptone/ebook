@@ -3,45 +3,35 @@ package com.example.chapmac.ebook.main;
 import com.example.chapmac.ebook.data.Book;
 import com.example.chapmac.ebook.data.BookStack;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * Created by chapmac on 4/20/2017 AD.
  */
 
-public class BookPresenter {
+public class BookPresenter implements Observer {
     private BookView view;
-    private BookStack bookstack;
-    private ArrayList<Book> bookShelf;
+    private BookStack repository;
 
-    public BookPresenter(BookStack bookstack, BookView view){
-        this.bookShelf = new ArrayList<Book>();
+    ArrayList<Book> books;
+
+    public BookPresenter(BookStack repository, BookView view) {
+        this.repository = repository;
         this.view = view;
     }
 
-    public void addBook(int price, int id, String title){
-        bookShelf.add(new Book(price,id,title));
-        bookstack.addStack(new Book(price,id,title));
+    public void initialize() {
+        repository.addObserver(this);
+        repository.fetchAllBooks();
     }
 
-    public void showList(){
-        String tmp = "";
-
-        if(bookShelf.isEmpty()){
-            tmp = "No Book";
-        }else {
-            for (Book i : bookShelf) {
-                tmp += i.toString() + "\n";
-
-
-            }
+    @Override
+    public void update(Observable obj, Object arg) {
+        if(obj == repository) {
+            books = new ArrayList<Book>(repository.getAllBooks());
+            view.setBookResult(books);
         }
-        view.setBookResult(tmp);
-
     }
-
-
-
 }

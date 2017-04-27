@@ -1,38 +1,49 @@
 package com.example.chapmac.ebook.data;
 
 /**
- * Created by chapmac on 4/20/2017 AD.
+ * Created by Max on 26/4/2560.
  */
 
 public class Book {
-    private int price;
     private int id;
     private String title;
+    private double price;
+    private int publicationYear;
+    private String imageUrl;
 
-    public Book(int price,int id,String title){
-        this.price = price;
+    public Book(int id, String title, double price, int publicationYear) {
         this.id = id;
         this.title = title;
-    }
-    public int getPrice() {
-        return price;
-    }
-    public void setPrice(int price) {
         this.price = price;
+        this.publicationYear = publicationYear;
+        this.imageUrl = null;
     }
+
+    public String toString() {
+        return title + " (" + price + ")";
+    }
+
     public int getId() {
         return id;
     }
-    public void setId(int id) {
-        this.id = id;
-    }
+
     public String getTitle() {
         return title;
     }
-    public void setTitle(String title) {
-        this.title = title;
+
+    public double getPrice() {
+        return price;
     }
-    public String toString(){
-        return "Title: " + title + " price: " + price;
+
+    public int getPublicationYear() {
+        return publicationYear;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
