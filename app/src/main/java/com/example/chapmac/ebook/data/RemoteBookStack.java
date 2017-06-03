@@ -35,6 +35,14 @@ public class RemoteBookStack extends BookStack {
         task.execute();
     }
 
+    public List<Book> getBooks(String text) {
+        List<Book> result = new ArrayList<Book>();
+        for(Book b:books) {
+            if (b.toString().contains(text)) result.add(b);
+        }
+        return result;
+    }
+
     @Override
     public List<Book> getAllBooks() {
         return books;
@@ -70,5 +78,9 @@ public class RemoteBookStack extends BookStack {
                 notifyObservers();
             }
         }
+    }
+
+    public Book getBookById(int position){
+        return books.get(position);
     }
 }
